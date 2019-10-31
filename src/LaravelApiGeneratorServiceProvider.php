@@ -2,6 +2,7 @@
 
 namespace Bhavingajjar\LaravelApiGenerator;
 
+use Bhavingajjar\LaravelApiGenerator\Commands\GenerateApi;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelApiGeneratorServiceProvider extends ServiceProvider
@@ -40,7 +41,9 @@ class LaravelApiGeneratorServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+            $this->commands([
+                GenerateApi::class
+            ]);
         }
     }
 

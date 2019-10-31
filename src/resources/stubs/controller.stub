@@ -1,0 +1,77 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\{{modelName}};
+use App\Http\Resources\{{modelName}}Resource;
+use App\Http\Resources\{{modelName}}Collection;
+
+class {{modelName}}Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return new {{modelName}}Collection({{modelName}}::all());
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $requestData = $request->all();
+        ${{modelNameLower}} = {{modelName}}::create($requestData);
+        return (new {{modelName}}Resource(${{modelNameLower}}))->setMessage('Created!');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{modelName}} ${{modelNameLower}})
+    {
+        return new {{modelName}}Resource({{modelName}}::find(${{modelNameLower}}));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, {{modelName}} ${{modelNameLower}})
+    {
+        $requestData = $request->all();
+        ${{modelNameLower}}->update($requestData);
+        return (new {{modelName}}Resource(${{modelNameLower}}))->setMessage('Updated!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{modelName}} ${{modelNameLower}})
+    {
+        ${{modelNameLower}}->delete();
+        return response()->json([
+          'success' => true,
+          'message' => 'Deleted!',
+          'meta' => null,
+          'errors' => null
+        ], 200);
+    }
+}

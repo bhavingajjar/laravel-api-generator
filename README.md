@@ -15,10 +15,16 @@ You can install the package via composer:
 composer require bhavingajjar/laravel-api-generator
 ```
 
+## Publish Configuration File
+
+```bash
+php artisan vendor:publish --provider="Bhavingajjar\LaravelApiGenerator\LaravelApiGeneratorServiceProvider" --tag="config"
+```
+
 ## Usage
 
 ``` php
-// Usage description here
+php artisan api:generate --model=User
 ```
 
 ### Testing
