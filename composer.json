@@ -1,0 +1,53 @@
+{
+    "name": "bhavingajjar/laravel-api-generator",
+    "description": "a laravel rest api generator",
+    "keywords": [
+        "bhavingajjar",
+        "laravel-api-generator"
+    ],
+    "homepage": "https://github.com/bhavingajjar/laravel-api-generator",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Bhavin Gajjar",
+            "email": "gajjarbhavin22@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "illuminate/support": "6.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bhavingajjar\\LaravelApiGenerator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bhavingajjar\\LaravelApiGenerator\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bhavingajjar\\LaravelApiGenerator\\LaravelApiGeneratorServiceProvider"
+            ],
+            "aliases": {
+                "LaravelApiGenerator": "Bhavingajjar\\LaravelApiGenerator\\LaravelApiGeneratorFacade"
+            }
+        }
+    }
+}
