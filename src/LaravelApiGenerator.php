@@ -43,6 +43,7 @@ class LaravelApiGenerator
         $template = file_get_contents(self::STUB_DIR . 'controller.stub');
         $template = str_replace('{{modelName}}', $this->model, $template);
         $template = str_replace('{{modelNameLower}}', strtolower($this->model), $template);
+        $template = str_replace('{{modelNameCamel}}', Str::camel($this->model), $template);
         file_put_contents(base_path('app/Http/Controllers/Api/' . $this->model . 'Controller.php'), $template);
     }
 

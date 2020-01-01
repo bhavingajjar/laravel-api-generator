@@ -29,8 +29,8 @@ class {{modelName}}Controller extends Controller
     public function store(Request $request)
     {
         $requestData = $request->all();
-        ${{modelNameLower}} = {{modelName}}::create($requestData);
-        return (new {{modelName}}Resource(${{modelNameLower}}))->setMessage('Created!');
+        ${{modelNameCamel}} = {{modelName}}::create($requestData);
+        return (new {{modelName}}Resource(${{modelNameCamel}}))->setMessage('Created!');
     }
 
     /**
@@ -39,9 +39,9 @@ class {{modelName}}Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show({{modelName}} ${{modelNameLower}})
+    public function show({{modelName}} ${{modelNameCamel}})
     {
-        return new {{modelName}}Resource({{modelName}}::find(${{modelNameLower}}));
+        return new {{modelName}}Resource({{modelName}}::find(${{modelNameCamel}}));
     }
 
     /**
@@ -51,11 +51,11 @@ class {{modelName}}Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, {{modelName}} ${{modelNameLower}})
+    public function update(Request $request, {{modelName}} ${{modelNameCamel}})
     {
         $requestData = $request->all();
-        ${{modelNameLower}}->update($requestData);
-        return (new {{modelName}}Resource(${{modelNameLower}}))->setMessage('Updated!');
+        ${{modelNameCamel}}->update($requestData);
+        return (new {{modelName}}Resource(${{modelNameCamel}}))->setMessage('Updated!');
     }
 
     /**
@@ -64,9 +64,9 @@ class {{modelName}}Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy({{modelName}} ${{modelNameLower}})
+    public function destroy({{modelName}} ${{modelNameCamel}})
     {
-        ${{modelNameLower}}->delete();
+        ${{modelNameCamel}}->delete();
         return response()->json([
           'success' => true,
           'message' => 'Deleted!',
