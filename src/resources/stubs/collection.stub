@@ -12,8 +12,8 @@ class {{modelName}}Collection extends ResourceCollection
      * @var string
      */
     public $collects = 'App\Http\Resources\{{modelName}}Resource';
-    /**
 
+    /**
      * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -24,19 +24,19 @@ class {{modelName}}Collection extends ResourceCollection
         return parent::toArray($request);
     }
 
-        /**
-         * Get additional data that should be returned with the resource array.
-         *
-         * @param \Illuminate\Http\Request $request
-         * @return array
-         */
-        public function with($request)
-        {
-            return [
-                'success' => true,
-                'message' => null,
-                'meta' => null,
-                'errors' => null
-            ];
-        }
+    /**
+     * Get additional data that should be returned with the resource array.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return array
+     */
+    public function with($request)
+    {
+        return [
+            'success' => true,
+            'message' => null,
+            'meta' => null,
+            'errors' => null
+        ];
+    }
 }
