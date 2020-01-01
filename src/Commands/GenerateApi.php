@@ -38,6 +38,11 @@ class GenerateApi extends Command
      */
     public function handle()
     {
+        if (!file_exists(base_path('app/' . $this->option('model') . '.php'))) {
+            $this->info('Model Not Exist');
+            return false;
+        }
+
         $api = new LaravelApiGenerator($this->option('model'));
         return true;
     }

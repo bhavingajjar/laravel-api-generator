@@ -48,7 +48,7 @@ class LaravelApiGenerator
 
     public function generateRoute()
     {
-        $template = "Route::apiResource('{{modelNameLower}}', 'Api\{{modelName}}Controller');";
+        $template = "Route::apiResource('{{modelNameLower}}', 'Api\{{modelName}}Controller');" . "\n";
         $route = str_replace('{{modelNameLower}}', strtolower(Str::plural($this->model)), $template);
         $route = str_replace('{{modelName}}', $this->model, $route);
         file_put_contents(base_path('routes/api.php'), $route, FILE_APPEND);
