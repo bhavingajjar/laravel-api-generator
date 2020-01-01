@@ -2,6 +2,8 @@
 
 namespace Bhavingajjar\LaravelApiGenerator;
 
+use Illuminate\Support\Str;
+
 class LaravelApiGenerator
 {
     const STUB_DIR = __DIR__ . '/resources/stubs/';
@@ -19,6 +21,7 @@ class LaravelApiGenerator
         self::generateResource();
         self::generateCollection();
         self::generateController();
+        self::generateRoute();
     }
 
     public function generateResource()
@@ -41,6 +44,14 @@ class LaravelApiGenerator
         $template = str_replace('{{modelName}}', $this->model, $template);
         $template = str_replace('{{modelNameLower}}', strtolower($this->model), $template);
         file_put_contents(base_path('app/Http/Controllers/Api/' . $this->model . 'Controller.php'), $template);
+    }
+
+    public function generateRoute()
+    {
+        $template = "Route::apiResource('{{modelNameLower}}', 'Api\{{modelName}}Controller');";
+        $route = str_replace('{{modelNameLower}}', strtolower(Str::plural($this->model)), $template);
+        $route = str_replace('{{modelName}}', $this->model, $route);
+        file_put_contents(base_path('routes/api.php'), $route, FILE_APPEND);
     }
 
     public function directoryCreate()
