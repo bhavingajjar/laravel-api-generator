@@ -41,7 +41,7 @@ class {{modelName}}Controller extends Controller
      */
     public function show({{modelName}} ${{modelNameCamel}})
     {
-        return new {{modelName}}Resource({{modelName}}::find(${{modelNameCamel}}));
+        return new {{modelName}}Resource(${{modelNameCamel}});
     }
 
     /**
