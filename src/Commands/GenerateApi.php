@@ -4,7 +4,6 @@ namespace Bhavingajjar\LaravelApiGenerator\Commands;
 
 use Bhavingajjar\LaravelApiGenerator\LaravelApiGenerator;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 
 class GenerateApi extends Command
 {
@@ -19,7 +18,7 @@ class GenerateApi extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'REST Api Generator With API Resources';
 
     /**
      * Create a new command instance.
@@ -38,12 +37,40 @@ class GenerateApi extends Command
      */
     public function handle()
     {
-        if (!file_exists(base_path('app/' . $this->option('model') . '.php'))) {
-            $this->info('Model does not exist!');
+        if (!file_exists(base_path(config('laravel-api-generator.model_directory_path') . '/' . $this->option('model') . '.php'))) {
+            $this->error('Model does not exist!');
             return false;
         }
 
         $api = new LaravelApiGenerator($this->option('model'));
+        $controller = $api->generateController();
+        if ($controller) {
+            $this->info('Controller Generated SuccessFully!');
+        } else {
+            $this->error('Controller Already Exists!');
+        }
+
+        $resource = $api->generateResource();
+        if ($resource) {
+            $this->info('Resource Generated SuccessFully!');
+        } else {
+            $this->error('Resource Already Exists!');
+        }
+
+        $collection = $api->generateCollection();
+        if ($collection) {
+            $this->info('Collection Generated SuccessFully!');
+        } else {
+            $this->error('Collection Already Exists!');
+        }
+
+        $route = $api->generateRoute();
+        if ($route) {
+            $this->info('Route Generated SuccessFully!');
+        } else {
+            $this->error('Route Already Exists!');
+        }
+
         $this->info('Api Created SuccessFully!');
         return true;
     }

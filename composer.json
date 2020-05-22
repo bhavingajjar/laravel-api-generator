@@ -1,9 +1,11 @@
 {
     "name": "bhavingajjar/laravel-api-generator",
-    "description": "a laravel rest api generator",
+    "description": "a laravel rest api generator with API Resources",
     "keywords": [
         "bhavingajjar",
-        "laravel-api-generator"
+        "laravel-api-generator",
+        "laravel-api-resources",
+        "api generator"
     ],
     "homepage": "https://github.com/bhavingajjar/laravel-api-generator",
     "license": "MIT",
