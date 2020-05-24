@@ -34,7 +34,7 @@ class LaravelApiGenerator
     public function generateController()
     {
         if (! file_exists(base_path('app/Http/Controllers/Api/'.$this->model.'Controller.php'))) {
-            $template = file_get_contents(self::STUB_DIR.'controller.stub');
+            $template = self::getStubContents('controller.stub');
             $template = str_replace('{{modelName}}', $this->model, $template);
             $template = str_replace('{{modelNameLower}}', strtolower($this->model), $template);
             $template = str_replace('{{modelNameCamel}}', Str::camel($this->model), $template);
@@ -48,7 +48,7 @@ class LaravelApiGenerator
     public function generateResource()
     {
         if (! file_exists(base_path('app/Http/Resources/'.$this->model.'Resource.php'))) {
-            $template = file_get_contents(self::STUB_DIR.'resource.stub');
+            $template = self::getStubContents('resource.stub');
             $template = str_replace('{{modelName}}', $this->model, $template);
             file_put_contents(base_path('app/Http/Resources/'.$this->model.'Resource.php'), $template);
             $this->result = true;
@@ -60,7 +60,7 @@ class LaravelApiGenerator
     public function generateCollection()
     {
         if (! file_exists(base_path('app/Http/Resources/'.$this->model.'Collection.php'))) {
-            $template = file_get_contents(self::STUB_DIR.'collection.stub');
+            $template = self::getStubContents('collection.stub');
             $template = str_replace('{{modelName}}', $this->model, $template);
             file_put_contents(base_path('app/Http/Resources/'.$this->model.'Collection.php'), $template);
             $this->result = true;
@@ -80,5 +80,9 @@ class LaravelApiGenerator
         }
 
         return $this->result;
+    }
+
+    private function getStubContents($stubName){
+        return file_get_contents(self::STUB_DIR.$stubName);
     }
 }

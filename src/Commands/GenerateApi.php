@@ -23,7 +23,6 @@ class GenerateApi extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -37,6 +36,12 @@ class GenerateApi extends Command
      */
     public function handle()
     {
+        if(empty($this->option('model'))){
+            $this->error('Model Name Argument not found!');
+
+            return false;
+        }
+
         if (! file_exists(base_path(config('laravel-api-generator.model_directory_path').'/'.$this->option('model').'.php'))) {
             $this->error('Model does not exist!');
 

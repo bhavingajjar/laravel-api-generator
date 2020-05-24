@@ -56,8 +56,8 @@ class LaravelApiGeneratorServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-api-generator');
 
         // Register the main class to use with the facade
-        $this->app->singleton('laravel-api-generator', function () {
-            return new LaravelApiGenerator;
+        $this->app->singleton('laravel-api-generator', function (string $model) {
+            return new LaravelApiGenerator($model);
         });
     }
 }

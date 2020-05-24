@@ -5,7 +5,7 @@ namespace Bhavingajjar\LaravelApiGenerator;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Bhavingajjar\LaravelApiGenerator\Skeleton\SkeletonClass
+ * @see \Bhavingajjar\LaravelApiGenerator\LaravelApiGenerator
  */
 class LaravelApiGeneratorFacade extends Facade
 {
