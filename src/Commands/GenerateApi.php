@@ -37,8 +37,9 @@ class GenerateApi extends Command
      */
     public function handle()
     {
-        if (!file_exists(base_path(config('laravel-api-generator.model_directory_path') . '/' . $this->option('model') . '.php'))) {
+        if (! file_exists(base_path(config('laravel-api-generator.model_directory_path').'/'.$this->option('model').'.php'))) {
             $this->error('Model does not exist!');
+
             return false;
         }
 
@@ -72,6 +73,7 @@ class GenerateApi extends Command
         }
 
         $this->info('Api Created SuccessFully!');
+
         return true;
     }
 }

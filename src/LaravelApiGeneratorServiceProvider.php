@@ -22,7 +22,7 @@ class LaravelApiGeneratorServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/config.php' => config_path('laravel-api-generator.php'),
+                __DIR__.'/../config/config.php' => config_path('laravel-api-generator.php'),
             ], 'config');
 
             // Publishing the views.
@@ -42,7 +42,7 @@ class LaravelApiGeneratorServiceProvider extends ServiceProvider
 
             // Registering package commands.
             $this->commands([
-                GenerateApi::class
+                GenerateApi::class,
             ]);
         }
     }
@@ -53,7 +53,7 @@ class LaravelApiGeneratorServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-api-generator');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-api-generator');
 
         // Register the main class to use with the facade
         $this->app->singleton('laravel-api-generator', function () {
