@@ -82,7 +82,8 @@ class LaravelApiGenerator
         return $this->result;
     }
 
-    private function getStubContents($stubName){
+    private function getStubContents($stubName)
+    {
         return file_get_contents(self::STUB_DIR.$stubName);
     }
 }

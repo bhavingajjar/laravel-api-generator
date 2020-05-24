@@ -22,7 +22,6 @@ class GenerateApi extends Command
 
     /**
      * Create a new command instance.
-     *
      */
     public function __construct()
     {
@@ -36,7 +35,7 @@ class GenerateApi extends Command
      */
     public function handle()
     {
-        if(empty($this->option('model'))){
+        if (empty($this->option('model'))) {
             $this->error('Model Name Argument not found!');
 
             return false;
