@@ -33,6 +33,7 @@ class LaravelApiGenerator
 
     public function generateController()
     {
+        $this->result = false;
         if (! file_exists(base_path('app/Http/Controllers/Api/'.$this->model.'Controller.php'))) {
             $template = self::getStubContents('controller.stub');
             $template = str_replace('{{modelName}}', $this->model, $template);
@@ -47,6 +48,7 @@ class LaravelApiGenerator
 
     public function generateResource()
     {
+        $this->result = false;
         if (! file_exists(base_path('app/Http/Resources/'.$this->model.'Resource.php'))) {
             $template = self::getStubContents('resource.stub');
             $template = str_replace('{{modelName}}', $this->model, $template);
@@ -59,6 +61,7 @@ class LaravelApiGenerator
 
     public function generateCollection()
     {
+        $this->result = false;
         if (! file_exists(base_path('app/Http/Resources/'.$this->model.'Collection.php'))) {
             $template = self::getStubContents('collection.stub');
             $template = str_replace('{{modelName}}', $this->model, $template);
@@ -71,6 +74,7 @@ class LaravelApiGenerator
 
     public function generateRoute()
     {
+        $this->result = false;
         $template = "Route::apiResource('{{modelNameLower}}', 'Api\{{modelName}}Controller');"."\n";
         $route = str_replace('{{modelNameLower}}', Str::camel(Str::plural($this->model)), $template);
         $route = str_replace('{{modelName}}', $this->model, $route);

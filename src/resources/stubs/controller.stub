@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\{{modelName}};
 use App\Http\Resources\{{modelName}}Resource;
@@ -13,9 +15,10 @@ class {{modelName}}Controller extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return {{modelName}}Collection
      */
-    public function index()
+    public function index(Request $request)
     {
         return new {{modelName}}Collection({{modelName}}::all());
     }
@@ -23,8 +26,8 @@ class {{modelName}}Controller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return {{modelName}}Resource
      */
     public function store(Request $request)
     {
@@ -36,8 +39,8 @@ class {{modelName}}Controller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param {{modelName}} ${{modelNameCamel}}
+     * @return {{modelName}}Resource
      */
     public function show({{modelName}} ${{modelNameCamel}})
     {
@@ -47,9 +50,9 @@ class {{modelName}}Controller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param {{modelName}} ${{modelNameCamel}}
+     * @return {{modelName}}Resource
      */
     public function update(Request $request, {{modelName}} ${{modelNameCamel}})
     {
@@ -61,8 +64,9 @@ class {{modelName}}Controller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param {{modelName}} ${{modelNameCamel}}
+     * @return JsonResponse
+     * @throws Exception
      */
     public function destroy({{modelName}} ${{modelNameCamel}})
     {
