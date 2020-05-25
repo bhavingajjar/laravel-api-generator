@@ -7,8 +7,15 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class {{modelName}}Resource extends JsonResource
 {
+    /**
+     * @var null
+     */
     protected $message = null;
 
+    /**
+     * @param $message
+     * @return $this
+     */
     public function setMessage($message)
     {
         $this->message = $message;

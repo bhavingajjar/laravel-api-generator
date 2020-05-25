@@ -72,10 +72,10 @@ class {{modelName}}Controller extends Controller
     {
         ${{modelNameCamel}}->delete();
         return response()->json([
-          'success' => true,
-          'message' => 'Deleted!',
-          'meta' => null,
-          'errors' => null
+            'success' => true,
+            'message' => 'Deleted!',
+            'meta' => null,
+            'errors' => null
         ], 200);
     }
 }

@@ -15,6 +15,21 @@ class {{modelName}}Collection extends ResourceCollection
     public $collects = 'App\Http\Resources\{{modelName}}Resource';
 
     /**
+     * @var null
+     */
+    protected $message = null;
+
+    /**
+     * @param $message
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+        return $this;
+    }
+
+    /**
      * Transform the resource collection into an array.
      *
      * @param Request $request
@@ -35,7 +50,7 @@ class {{modelName}}Collection extends ResourceCollection
     {
         return [
             'success' => true,
-            'message' => null,
+            'message' => $this->message,
             'meta' => null,
             'errors' => null
         ];
