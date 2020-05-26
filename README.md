@@ -13,13 +13,22 @@ This package is used to generate laravel api with Resources
 You can install the package via composer:
 
 ```bash
-composer require bhavingajjar/laravel-api-generator --dev
+composer require bhavingajjar/laravel-api-generator
 ```
 
 ## Publish Configuration File
 
 ```bash
 php artisan vendor:publish --provider="Bhavingajjar\LaravelApiGenerator\LaravelApiGeneratorServiceProvider" --tag="config"
+
+Next, if you plan for cross origin support, you should add middleware to your api middleware group within your app/Http/Kernel.php file:
+'ApiHeaderInject'
+
+add in env
+for allow cross origin support
+API_ALLOW_CROSS_ORIGIN = true
+for json content type
+API_JSON_RESPONSE = true
 ```
 
 ## Usage
