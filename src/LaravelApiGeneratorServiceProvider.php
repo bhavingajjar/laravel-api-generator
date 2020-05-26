@@ -59,5 +59,10 @@ class LaravelApiGeneratorServiceProvider extends ServiceProvider
         $this->app->singleton('laravel-api-generator', function (string $model) {
             return new LaravelApiGenerator($model);
         });
+
+        $this->app['router']->middleware('ApiHeaderInject', 'Bhavingajjar\LaravelApiGenerator\Middleware\ApiHeaderInject');
+
+        $this->app['router']->aliasMiddleware('ApiHeaderInject', \Bhavingajjar\LaravelApiGenerator\Middleware\ApiHeaderInject::class);
+        $this->app['router']->pushMiddlewareToGroup('api', \Bhavingajjar\LaravelApiGenerator\Middleware\ApiHeaderInject::class);
     }
 }
