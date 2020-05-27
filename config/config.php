@@ -15,4 +15,6 @@ return [
     */
     'model_directory_path' => 'app',
 
+    'allow_cross_origin' => env('API_ALLOW_CROSS_ORIGIN', false),
+    'json_response' => env('API_JSON_RESPONSE', true),
 ];
