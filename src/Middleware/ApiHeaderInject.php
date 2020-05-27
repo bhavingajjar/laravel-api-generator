@@ -12,7 +12,6 @@ class ApiHeaderInject
         if(config('laravel-api-generator.json_response')) {
             $request->headers->add([
                 'Accept'=>'application/json',
-                'Content-Type'=>'application/json'
             ]);
         }
         if(config('laravel-api-generator.allow_cross_origin')) {
