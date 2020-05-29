@@ -37,7 +37,11 @@ class {{modelName}}Collection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        //return parent::toArray($request);
+        return $this->collection->map(function({{modelName}}Resource $resource) use($request){
+            return $resource
+                ->toArray($request);
+        })->all();
     }
 
     /**
