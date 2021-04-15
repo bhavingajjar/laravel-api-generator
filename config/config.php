@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'model_directory_path' => is_dir(base_path('app/Models')) ? 'app/Models':'app',
+    'model_directory_path' => is_dir(base_path('app/Models')) ? 'app/Models' : 'app',
 
     'allow_cross_origin' => env('API_ALLOW_CROSS_ORIGIN', false),
     'json_response' => env('API_JSON_RESPONSE', true),
