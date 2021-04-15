@@ -52,11 +52,7 @@ class LaravelApiGenerator
     {
         $this->result = false;
         if (! file_exists(base_path('app/Http/Resources/'.$this->model.'Resource.php'))) {
-            if(is_dir(base_path('app/Models'))){
-                $model = app('App\\Models\\'.$this->model);
-            }else{
-                $model = app('App\\'.$this->model);
-            }
+            $model = (is_dir(base_path('app/Models'))) ? app('App\\Models\\'.$this->model) : app('App\\'.$this->model);
             $columns = $model->getConnection()->getSchemaBuilder()->getColumnListing($model->getTable());
             $print_columns = null;
             foreach ($columns as $key => $column) {
