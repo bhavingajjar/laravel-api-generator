@@ -83,18 +83,18 @@ class LaravelApiGenerator
     public function generateRoute()
     {
         $this->result = false;
-        if(app()->version() >= 8 ){
+        if (app()->version() >= 8) {
             $nameSpace = "\nuse App\Http\Controllers\Api\{{modelName}}Controller;";
             $template = "Route::apiResource('{{modelNameLower}}', {{modelName}}Controller::class);\n";
             $nameSpace = str_replace('{{modelName}}', $this->model, $nameSpace);
-        }else{
+        } else {
             $template = "Route::apiResource('{{modelNameLower}}', 'Api\{{modelName}}Controller');\n";
         }
         $route = str_replace('{{modelNameLower}}', Str::camel(Str::plural($this->model)), $template);
         $route = str_replace('{{modelName}}', $this->model, $route);
         if (! strpos(file_get_contents(base_path('routes/api.php')), $route)) {
             file_put_contents(base_path('routes/api.php'), $route, FILE_APPEND);
-            if(app()->version() >= 8 ){
+            if (app()->version() >= 8) {
                 if (! strpos(file_get_contents(base_path('routes/api.php')), $nameSpace)) {
                     $lines = file(base_path('routes/api.php'));
                     $lines[0] = $lines[0]."\n".$nameSpace;
@@ -103,6 +103,7 @@ class LaravelApiGenerator
             }
             $this->result = true;
         }
+
         return $this->result;
     }
 
