@@ -39,6 +39,7 @@ class LaravelApiGenerator
             $template = str_replace('{{modelName}}', $this->model, $template);
             $template = str_replace('{{modelNameLower}}', strtolower($this->model), $template);
             $template = str_replace('{{modelNameCamel}}', Str::camel($this->model), $template);
+            $template = str_replace('{{modelNameSpace}}', is_dir(base_path('app/Models')) ? 'Models\\'.$this->model : $this->model, $template);
             file_put_contents(base_path('app/Http/Controllers/Api/'.$this->model.'Controller.php'), $template);
             $this->result = true;
         }
@@ -50,7 +51,7 @@ class LaravelApiGenerator
     {
         $this->result = false;
         if (! file_exists(base_path('app/Http/Resources/'.$this->model.'Resource.php'))) {
-            $model = app('App\\'.$this->model);
+            $model = is_dir(base_path('app/Models')) ? app('App\\Models\\'.$this->model) : app('App\\'.$this->model);
             $columns = $model->getConnection()->getSchemaBuilder()->getColumnListing($model->getTable());
             $print_columns = null;
             foreach ($columns as $key => $column) {
@@ -89,7 +90,6 @@ class LaravelApiGenerator
             file_put_contents(base_path('routes/api.php'), $route, FILE_APPEND);
             $this->result = true;
         }
-
         return $this->result;
     }
 
