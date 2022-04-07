@@ -6,7 +6,6 @@ All notable changes to `laravel-api-generator` will be documented in this file
 
 - initial release
 
-## 1.1.1 - 2020-05-25
+## 3.0.2 - 2022-04-07
 
-- changes of php document
-- added already created files was replace fixed
+- laravel 9 support added
