@@ -3,7 +3,6 @@
 namespace Bhavingajjar\LaravelApiGenerator\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Config;
 
 class ApiHeaderInject
 {
